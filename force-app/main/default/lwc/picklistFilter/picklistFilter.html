@@ -10,16 +10,19 @@
             </lightning-combobox>
       </template><br/>
       you selected industry: <b>{value}</b><br/><br/>
-      <template if:true={IndustryPicklistValues.data}>
-        Account Type: <br/>
-        <template for:each={TypePicklistValues.data.values} for:item="item">
-            <lightning-input
-                placeholder="Account Type"
-                key={item.value}
-                label={item.label}
-                data-value={item.value}
-                type="checkbox"></lightning-input>
-        </template>
-    </template>
+      <!--
+        <template if:true={IndustryPicklistValues.data}>
+                Account Type: <br/>
+                <template for:each={TypePicklistValues.data.values} for:item="item">
+                    <lightning-input
+                        placeholder="Account Type"
+                        key={item.value}
+                        label={item.label}
+                        data-value={item.value}
+                        type="checkbox"></lightning-input>
+                </template>
+            </template>
+      -->
+      
     </lightning-card>
 </template>
