@@ -4,7 +4,7 @@ import { getObjectInfo } from 'lightning/uiObjectInfoApi';
 import ACCOUNT_OBJECT from '@salesforce/schema/Account';
 import INDUSTRY_FIELD from '@salesforce/schema/Account.Industry';
 import getAccountsByIndustry from '@salesforce/apex/PicklistFilterController.getAccountsByIndustry';
-
+//name and type as columns in the datatable
 const columns = [
     { label: 'Name', fieldName: 'Name' },
     { label: 'Type', fieldName: 'Type' }
