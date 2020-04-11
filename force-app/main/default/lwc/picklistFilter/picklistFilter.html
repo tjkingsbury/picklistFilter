@@ -8,21 +8,14 @@
                                 options={IndustryPicklistValues.data.values}
                                 onchange={handleChange} >
             </lightning-combobox>
-      </template><br/>
-      you selected industry: <b>{value}</b><br/><br/>
-      <!--
-        <template if:true={IndustryPicklistValues.data}>
-                Account Type: <br/>
-                <template for:each={TypePicklistValues.data.values} for:item="item">
-                    <lightning-input
-                        placeholder="Account Type"
-                        key={item.value}
-                        label={item.label}
-                        data-value={item.value}
-                        type="checkbox"></lightning-input>
-                </template>
-            </template>
-      -->
-      
+        </template>
+        <div style="height: 300px;">
+            <lightning-datatable
+                key-field="Id"
+                data={data}
+                columns={columns}
+                hide-checkbox-column>
+            </lightning-datatable>
+        </div>    
     </lightning-card>
 </template>

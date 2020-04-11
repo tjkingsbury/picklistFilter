@@ -3,21 +3,30 @@ import { getPicklistValues } from 'lightning/uiObjectInfoApi';
 import { getObjectInfo } from 'lightning/uiObjectInfoApi';
 import ACCOUNT_OBJECT from '@salesforce/schema/Account';
 import INDUSTRY_FIELD from '@salesforce/schema/Account.Industry';
-//import TYPE_FIELD from '@salesforce/schema/Account.Type';
+import getAccountsByIndustry from '@salesforce/apex/PicklistFilterController.getAccountsByIndustry';
+
+const columns = [
+    { label: 'Name', fieldName: 'Name' },
+    { label: 'Type', fieldName: 'Type' }
+];
 
 export default class PicklistFilter extends LightningElement {
-    @track value;
+    @track value = '';
+    @track data = [];
+    @track columns = columns;
 
     @wire(getObjectInfo, { objectApiName: ACCOUNT_OBJECT })
     objectInfo;
-
-    //@wire(getPicklistValues, { recordTypeId: '$objectInfo.data.defaultRecordTypeId', fieldApiName: TYPE_FIELD})
-    //TypePicklistValues;
 
     @wire(getPicklistValues, { recordTypeId: '$objectInfo.data.defaultRecordTypeId', fieldApiName: INDUSTRY_FIELD})
     IndustryPicklistValues;
 
     handleChange(event) {
         this.value = event.detail.value;
+    }
+
+    @wire(getAccountsByIndustry, { industry : '$value' })
+    accountsByIndustryCallback({error,data}){
+        this.data = data;
     }
 }

@@ -1,8 +1,7 @@
 public with sharing class PicklistFilterController {
     
-
-    @AuraEnabled
+    @AuraEnabled(cacheable=true)
     public static List<Account> getAccountsByIndustry(String industry){
-        return [SELECT Id FROM Account WHERE Industry=:industry];
+        return [SELECT Id, Name, Type FROM Account WHERE Industry=:industry];
     }
 }
